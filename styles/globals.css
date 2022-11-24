@@ -60,3 +60,25 @@ main {
 .p-5 {
   padding: 5rem 0;
 }
+
+.alert{
+  background-color: #f44336;
+  color: var(--white);
+  margin-top: 2rem;
+  padding: 2rem;
+  font-size: 1.8rem;
+  text-align: center;
+  position: relative;
+}
+
+.alert__closebtn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  outline: none;
+  background-color: #f44336;
+  color: var(--white);
+  font-size: 2rem;
+  cursor: pointer;
+}

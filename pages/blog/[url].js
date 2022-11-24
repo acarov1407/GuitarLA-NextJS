@@ -3,13 +3,13 @@ import { formatDate } from '../../utils/helpers';
 import Image from 'next/image';
 import styles from "../../styles/blog/blogCard.module.css";
 
-export default function Blog({ data: blog }) {
+export default function Blog({ data: blog, cartCount}) {
 
 
   const { title, content, publishedAt, image } = blog.data[0].attributes;
 
   return (
-    <Layout title={title}>
+    <Layout title={title} cartCount={cartCount}>
       <main className={styles.blogEntry}>
         <article className={`${styles.blogCard} ${styles["blogCard--entry-view"]}`}>
           <Image width={600} height={400} 

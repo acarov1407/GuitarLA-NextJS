@@ -5,11 +5,11 @@ import BlogItem from "../components/blogItem";
 import stylesShop from "../styles/shop/shop.module.css";
 import stylesBlog from "../styles/blog/blog.module.css";
 
-export default function Home({ guitars, course, blogs }) {
-  console.log(guitars)
+export default function Home({ guitars, course, blogs, cartCount }) {
+  console.log(cartCount)
   return (
     <>
-      <Layout title="Inicio" description="GuitarLA, tienda de guitarras y blog de música">
+      <Layout title="Inicio" description="GuitarLA, tienda de guitarras y blog de música" cartCount={cartCount}>
         <main className={stylesShop.shop}>
           <h2 className={stylesShop.shop__heading}>Nuestra Colección</h2>
           <div className={stylesShop.shop__content}>

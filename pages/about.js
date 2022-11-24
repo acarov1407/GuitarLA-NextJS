@@ -2,9 +2,9 @@ import Layout from "../components/layout"
 import Image from "next/image";
 import styles from '../styles/about/about.module.css';
 
-function About() {
+function About({cartCount}) {
     return (
-        <Layout title="Nosotros">
+        <Layout title="Nosotros" description="GuitarLA, Sobre Nosotros, tienda de guitarras y blog de música" cartCount={cartCount}>
             <main className={styles.about}>
                 <h2 className={styles.about__heading}>Nosotros</h2>
                 <div className={styles.about__content}>

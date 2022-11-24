@@ -3,11 +3,11 @@ import BlogItem from "../components/blogItem";
 import styles from "../styles/blog/blog.module.css";
 
 
-export default function Blog({ data }) {
+export default function Blog({ data, cartCount }) {
     const { data: blogs } = data;
 
     return (
-        <Layout title="Blog" description="Blog, GuitarLA, blog de música">
+        <Layout title="Blog" description="Blog, GuitarLA, blog de música" cartCount={cartCount}>
             <main className={styles.blog}>
                 <h2 className={styles.blog__heading}>Blog</h2>
                 <div className={styles.blog__content}>

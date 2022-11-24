@@ -2,11 +2,11 @@ import Layout from "../components/layout"
 import Guitar from "../components/guitar"
 import styles from "../styles/shop/shop.module.css";
 
-export default function Shop({ data: guitars }) {
+export default function Shop({ data: guitars, cartCount }) {
 
     return (
 
-        <Layout title="Tienda Virtual" description="Tienda Virtual, GuitarLA, tienda de guitarras">
+        <Layout title="Tienda Virtual" description="Tienda Virtual, GuitarLA, tienda de guitarras" cartCount={cartCount}>
             <main className={styles.shop}>
                 <h2 className={styles.shop__heading}>Nuestra Colección</h2>
                 <div className={styles.shop__content}>

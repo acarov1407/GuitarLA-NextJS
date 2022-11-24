@@ -1,14 +1,40 @@
+import {useState} from 'react';
+import Alert from '../../components/alert';
 import Layout from "../../components/layout";
 import styles from '../../styles/guitars/guitars.module.css';
 import Image from "next/image";
 
 
-export default function Guitar({ data: guitar }) {
+export default function Guitar({ data: guitar, addToCart, cartCount }) {
 
-    const { name, description, image, url, price } = guitar.data[0].attributes;
+    const [error, setError] = useState(false);
+    const [amount, setAmount] = useState(0);
+    const { name, description, image, price } = guitar.data[0].attributes;
+
+    function handleSubmit(e){
+        e.preventDefault();
+        if(amount <= 0){
+            setError(true);
+            return;
+        }
+
+        setError(false);
+
+        const guitarLS = {
+            id: guitar.data[0].id,
+            name,
+            description,
+            image,
+            price,
+            amount
+        }
+
+        addToCart(guitarLS);
+        
+    }
 
     return (
-        <Layout title={name}>
+        <Layout title={name} cartCount={cartCount}>
             <main className={styles.guitar}>
                 <div className={`${styles.guitar__content} container`}>
                     <Image width={600} height={400} src={image.data.attributes.formats.medium.url} alt={`guitarra ${name}`} className={styles.guitar__img} />
@@ -18,11 +44,14 @@ export default function Guitar({ data: guitar }) {
                             {description}
                         </p>
                         <p className={styles.guitar__price}>${price}</p>
-                        <form className={styles.guitar__form}>
+                        <form className={styles.guitar__form} onSubmit={handleSubmit}>
                             <div className={styles.field}>
                                 <label htmlFor="amount" className={styles["guitar__form-label"]}>Cantidad</label>
                                 <select name="amount" id="amount"
-                                    className={styles["guitar__form-select"]} >
+                                    className={styles["guitar__form-select"]} 
+                                    value={amount}
+                                    onChange={(e) => setAmount(parseInt(e.target.value))}
+                                    >
                                     <option value="0">-- Seleccione --</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -32,7 +61,10 @@ export default function Guitar({ data: guitar }) {
                             </div>
                             <input type="submit" value="Agregar al carrito" className={styles["guitar__form-submit"]} />
                         </form>
-
+                        {
+                            error && <Alert msg="Debes seleccionar una cantidad válida!" setError={setError}/>
+                        }
+                        
 
                     </div>
                 </div>

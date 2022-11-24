@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Header from './header';
 import Footer from './footer';
 
-function Layout({children, title = '', description = ''}) {
+function Layout({children, title = '', description = 'GuitarLA, tienda de guitarras y blog de música', cartCount}) {
   return (
     <>
     <Head>
@@ -10,7 +10,7 @@ function Layout({children, title = '', description = ''}) {
         <title>{`GuitarLA - ${title}`}</title>
     </Head>
     
-    <Header />
+    <Header cartCount={cartCount}/>
     
     {children}
     

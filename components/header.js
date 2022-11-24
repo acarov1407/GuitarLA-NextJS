@@ -3,7 +3,7 @@ import Nav from "./nav";
 import Image from "next/image";
 import styles from '../styles/index/header.module.css';
 
-function Header() {
+function Header({cartCount}) {
   return (
     <header className={styles.header}>
             <div className={`${styles.header__content} container`}>
@@ -12,7 +12,7 @@ function Header() {
                         <Image width={300} height={40} src="/img/logo.svg" alt="logo Guitar LA" className={styles.header__logoimg} />
                     </Link>
                 </div>
-                <Nav />
+                <Nav cartCount={cartCount}/>
             </div>
         </header>
   )
